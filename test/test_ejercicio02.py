@@ -33,7 +33,7 @@ class TestClasificarTemperatura:
         Test: Temperatura muy negativa debe ser Helada y extrema
         """
         clasificacion, es_extrema = clasificar_temperatura(-15.0)
-        assert clasificacion == "Helada", "Temperatura -15°C debe ser Helada"
+        assert clasificacion == "Extrema fría", "Temperatura -15°C debe ser Helada"
         assert es_extrema == True, "Temperatura -15°C ES extrema"
     
     def test_frio_cero(self):
@@ -121,7 +121,7 @@ class TestClasificarTemperatura:
         Test: Temperatura 45°C debe ser Caluroso y extrema
         """
         clasificacion, es_extrema = clasificar_temperatura(45.0)
-        assert clasificacion == "Caluroso", "Temperatura 45°C debe ser Caluroso"
+        assert clasificacion == "Extrema calurosa", "Temperatura 45°C debe ser Caluroso"
         assert es_extrema == True, "Temperatura 45°C ES extrema"
     
     def test_temperatura_extrema_fria_limite(self):
@@ -173,7 +173,7 @@ class TestClasificarTemperatura:
         Test: Temperatura -50°C es válida (límite)
         """
         clasificacion, es_extrema = clasificar_temperatura(-50.0)
-        assert clasificacion == "Helada", "Temperatura -50°C es válida"
+        assert clasificacion == "Extrema fría", "Temperatura -50°C es válida"
         assert es_extrema == True, "Temperatura -50°C ES extrema"
     
     def test_temperatura_limite_superior_valido(self):
@@ -181,7 +181,7 @@ class TestClasificarTemperatura:
         Test: Temperatura 60°C es válida (límite)
         """
         clasificacion, es_extrema = clasificar_temperatura(60.0)
-        assert clasificacion == "Caluroso", "Temperatura 60°C es válida"
+        assert clasificacion == "Extrema calurosa", "Temperatura 60°C es válida"
         assert es_extrema == True, "Temperatura 60°C ES extrema"
     
     def test_tipos_retorno(self):
@@ -232,8 +232,8 @@ class TestCasosLimite:
 
 # Tests parametrizados para mayor cobertura
 @pytest.mark.parametrize("temperatura,clasificacion_esperada,extrema_esperada", [
-    (-50, "Helada", True),
-    (-25, "Helada", True),
+    (-50, "Extrema fría", True),
+    (-25, "Extrema fría", True),
     (-10, "Helada", False),
     (-5, "Helada", False),
     (0, "Frío", False),
@@ -245,8 +245,8 @@ class TestCasosLimite:
     (30, "Cálido", False),
     (35, "Caluroso", False),
     (40, "Caluroso", False),
-    (45, "Caluroso", True),
-    (60, "Caluroso", True),
+    (45, "Extrema calurosa", True),
+    (60, "Extrema calurosa", True),
 ])
 def test_clasificaciones_parametrizadas(temperatura, clasificacion_esperada, extrema_esperada):
     """
