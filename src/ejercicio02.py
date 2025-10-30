@@ -33,9 +33,9 @@ def clasificar_temperatura(temperatura: float) -> tuple[str, bool]:
     if temperatura < -50 or temperatura > 60:
         return "Inválida", False
     elif temperatura < -10:
-        return "Extrema fría", True
+        return "Helada", True
     elif temperatura > 40:
-        return "Extrema calurosa", True
+        return "Caluroso", True
     elif temperatura < 0:
         return "Helada", False
     elif 0 <= temperatura <= 10:
