@@ -48,12 +48,18 @@ def simular_carrera(velocidad1: int, velocidad2: int, velocidad3: int, distancia
         caracol3 += velocidad3
         turnos_necesarios += 1
     if caracol >= distancia_meta:
-        meta_pasada.append(caracol)
+        meta_pasada.append(1)
     if caracol2 >= distancia_meta:
-        meta_pasada.append(caracol2)
+        meta_pasada.append(2)
     if caracol3 >= distancia_meta:
-        meta_pasada.append(caracol3)
-    ganador = min(meta_pasada)
+        meta_pasada.append(3)
+    masbajo = min(meta_pasada)
+    if masbajo == 1:
+        ganador = 1
+    elif masbajo == 2:
+        ganador = 2
+    elif masbajo == 3:
+        ganador = 3
     return ganador, turnos_necesarios
 
 
